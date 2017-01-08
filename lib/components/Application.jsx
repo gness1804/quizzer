@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-
-const ReactDOM = require('react-dom');
+import Quiz from "./Quiz";
 
 class Application extends Component {
 
   render() {
     return (
-      <div>Hello! This is a test. If I can see this, then React is set up correctly.</div>
+      <div>
+        <Quiz />
+      </div>
     );
   }
 
