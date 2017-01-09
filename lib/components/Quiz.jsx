@@ -38,7 +38,9 @@ class Quiz extends Component {
     hitAPI.onreadystatechange = function() {
       if (hitAPI.readyState === XMLHttpRequest.DONE) {
         if (hitAPI.status === 200) {
-          console.log(JSON.parse(hitAPI.responseText));
+          let result = JSON.parse(hitAPI.responseText);
+          that.setState({ title: result.quiz.title });
+          that.setState({ questions: result.quiz.questions });
         } else {
           console.error('There was a problem with the API call.');
         }
@@ -56,7 +58,7 @@ class Quiz extends Component {
         <button onClick={() => { this.getOnlyOneQuiz()} }>Get only one quiz.</button>
         {title}
         <ul>
-          <li>{questions.map(q => <EachQuestion {...q} />)}</li>
+          <li>{questions.map(q => <EachQuestion {...q} key={q.id} />)}</li>
         </ul>
       </div>
     );
