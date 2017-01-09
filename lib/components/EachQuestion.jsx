@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EachAnswerBlock from "./EachAnswerBlock";
 
 class EachQuestion extends Component {
 
@@ -9,7 +10,7 @@ class EachQuestion extends Component {
     return (
       <div>
         <h2>{title}</h2>
-        {answers.map(a => <p>{a.title}</p>)}
+        {answers.map(a => <EachAnswerBlock {...a} key={a.score} />)}
       </div>
     );
   }
