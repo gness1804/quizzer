@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import EachQuestion from "./EachQuestion";
 
 class Quiz extends Component {
@@ -48,6 +49,31 @@ class Quiz extends Component {
     }
   }
 
+  postNewQuestion(){
+    const qid = prompt('Please enter the ID of the quiz you wish to modify.');
+    axios.post(`http://localhost:3001/quizzes/${qid}/questions`, {
+      "title": "What is a linear gradient?",
+      "answers": [
+        {
+          score: 2,
+          title: 'A way of introducing a subtle color shifting effect in CSS.',
+        },
+        {
+          score: 0,
+          title: 'A really effing big deal.',
+        },
+        {
+          score: 1,
+          title: 'Lebron James.',
+        },
+        {
+          score: 3,
+          title: 'An enduring fascination back in Mod 1.',
+        },
+      ],
+    }).then((response) => { console.log(response) }).catch((err) => { console.log(err) });
+  }
+
   render() {
 
     const { title, questions } = this.state;
@@ -56,6 +82,7 @@ class Quiz extends Component {
       <div>
         <button onClick={() => { this.getAllQuizzes() }}>Get All Quizzes!</button>
         <button onClick={() => { this.getOnlyOneQuiz()} }>Get only one quiz.</button>
+        <button onClick={() => { this.postNewQuestion()} }>Post New Question</button>
         {title}
         <ul>
           <li>{questions.map(q => <EachQuestion {...q} key={q.id} />)}</li>
