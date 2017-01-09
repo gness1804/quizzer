@@ -4,13 +4,13 @@ class EachAnswerBlock extends Component {
 
   render() {
 
-    const { title } = this.props;
+    const { title, uniqname } = this.props;
 
     return (
       <div>
-        <label>
-          <input type="radio" />
-          <p>{title}</p>
+        <label htmlFor="answer">
+          {title}
+          <input name={uniqname} className="answer" type="radio" />
         </label>
       </div>
     );

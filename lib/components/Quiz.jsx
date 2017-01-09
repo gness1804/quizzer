@@ -60,6 +60,7 @@ class Quiz extends Component {
         <ul>
           <li>{questions.map(q => <EachQuestion {...q} key={q.id} />)}</li>
         </ul>
+        <button>Submit</button>
       </div>
     );
   }

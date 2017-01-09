@@ -10,7 +10,7 @@ class EachQuestion extends Component {
     return (
       <div>
         <h2>{title}</h2>
-        {answers.map(a => <EachAnswerBlock {...a} key={a.score} />)}
+        {answers.map(a => <EachAnswerBlock {...a} key={a.score} uniqname={title} />)}
       </div>
     );
   }
