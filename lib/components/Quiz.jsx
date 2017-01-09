@@ -10,7 +10,7 @@ class Quiz extends Component {
     };
   }
 
-  makeAPICall(){
+  getAllQuizzes(){
     let that = this;
     var hitAPI = new XMLHttpRequest();
     hitAPI.open('GET', 'http://localhost:3001/quizzes', true);
@@ -29,13 +29,31 @@ class Quiz extends Component {
     }
   }
 
+  getOnlyOneQuiz(){
+    let that = this;
+    let qid = prompt('Please enter in the quiz id.');
+    var hitAPI = new XMLHttpRequest();
+    hitAPI.open('GET', `http://localhost:3001/quizzes/${qid}`, true);
+    hitAPI.send();
+    hitAPI.onreadystatechange = function() {
+      if (hitAPI.readyState === XMLHttpRequest.DONE) {
+        if (hitAPI.status === 200) {
+          console.log(JSON.parse(hitAPI.responseText));
+        } else {
+          console.error('There was a problem with the API call.');
+        }
+      }
+    }
+  }
+
   render() {
 
     const { title, questions } = this.state;
 
     return (
       <div>
-        <button onClick={() => { this.makeAPICall() }}>Choose Your Poison!</button>
+        <button onClick={() => { this.getAllQuizzes() }}>Get All Quizzes!</button>
+        <button onClick={() => { this.getOnlyOneQuiz()} }>Get only one quiz.</button>
         {title}
         <ul>
           <li>{questions.map(q => <EachQuestion {...q} />)}</li>
