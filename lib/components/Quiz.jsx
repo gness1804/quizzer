@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import EachQuestion from "./EachQuestion";
 
 class Quiz extends Component {
   constructor() {
     super();
     this.state = {
       title: '',
+      questions: [],
     };
   }
 
@@ -19,6 +21,7 @@ class Quiz extends Component {
           let result = JSON.parse(hitAPI.responseText);
           let singleQuiz = result.quizzes[0];
           that.setState({ title: singleQuiz.title });
+          that.setState({ questions: singleQuiz.questions });
         } else {
           console.error('There was a problem with the API call.');
         }
@@ -28,12 +31,15 @@ class Quiz extends Component {
 
   render() {
 
-    const { title } = this.state;
+    const { title, questions } = this.state;
 
     return (
       <div>
-        <button onClick={() => { this.makeAPICall() }}>Click</button>
+        <button onClick={() => { this.makeAPICall() }}>Choose Your Poison!</button>
         {title}
+        <ul>
+          <li>{questions.map(q => <EachQuestion {...q} />)}</li>
+        </ul>
       </div>
     );
   }
