@@ -81,13 +81,13 @@ class Quiz extends Component {
     return (
       <div>
         {title ? <h1 className="headline">{title}</h1> : ''}
-        <button onClick={() => { this.getAllQuizzes() }}>Get All Quizzes!</button>
-        <button onClick={() => { this.getOnlyOneQuiz()} }>Get only one quiz.</button>
-        <button onClick={() => { this.postNewQuestion()} }>Post New Question</button>
+        <button className="top-button" onClick={() => { this.getAllQuizzes() }}>Get All Quizzes!</button>
+        <button className="top-button" onClick={() => { this.getOnlyOneQuiz()} }>Get only one quiz.</button>
+        <button className="top-button" onClick={() => { this.postNewQuestion()} }>Post New Question</button>
         <ul>
           <li>{questions.map(q => <EachQuestion {...q} key={q.id} />)}</li>
         </ul>
-        <button>Submit</button>
+        <button className="submit-button">Submit</button>
       </div>
     );
   }
