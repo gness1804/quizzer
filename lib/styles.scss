@@ -3,6 +3,18 @@
 @import "debug.scss";
 @import "mobile.scss";
 
+html {
+  font-family: $main-font;
+}
+
+.container {
+  text-align: center;
+}
+
+.headline {
+  font-size: 2.5em;
+}
+
 ul li {
   list-style-type: none;
 }

@@ -80,10 +80,10 @@ class Quiz extends Component {
 
     return (
       <div>
+        {title ? <h1 className="headline">{title}</h1> : ''}
         <button onClick={() => { this.getAllQuizzes() }}>Get All Quizzes!</button>
         <button onClick={() => { this.getOnlyOneQuiz()} }>Get only one quiz.</button>
         <button onClick={() => { this.postNewQuestion()} }>Post New Question</button>
-        {title}
         <ul>
           <li>{questions.map(q => <EachQuestion {...q} key={q.id} />)}</li>
         </ul>
