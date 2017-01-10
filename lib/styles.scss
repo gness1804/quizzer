@@ -38,3 +38,12 @@ html {
 ul li {
   list-style-type: none;
 }
+
+.answer-text {
+
+  &:hover {
+      background-color: #ffffff;
+      cursor: pointer;
+  }
+
+}

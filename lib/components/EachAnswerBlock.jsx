@@ -9,7 +9,7 @@ class EachAnswerBlock extends Component {
     return (
       <div>
         <label htmlFor={`${title.substring(0, 3)}`}>
-          {title}
+          <span className="answer-text">{title}</span>
           <input name={uniqname} className="answer" id={`${title.substring(0, 3)}`} type="radio" />
         </label>
       </div>
